@@ -24,13 +24,11 @@ class MainWindow(qtw.QWidget):
         self.layout().addWidget(my_entry)
 
         #Create a Spin Box
-        my_spin = qtw.QSpinBox(self,
+        my_spin = qtw.QDoubleSpinBox(self,
         value = 10,
         maximum = 100,
         minimum = 0,
-        singleStep = 5,
-        prefix = "#",
-        suffix = " Order")
+        singleStep = 5.50)
 
         #Change Font Size of Spin Box
         my_spin.setFont(qtg.QFont('Helvetica',14))
