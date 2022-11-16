@@ -28,10 +28,12 @@ class MainWindow(qtw.QWidget):
         value = 10,
         maximum = 100,
         minimum = 0,
-        singleStep = 5)
+        singleStep = 5,
+        prefix = "#",
+        suffix = " Order")
 
         #Change Font Size of Spin Box
-        my_spin.setFont(qtg.QFont('Helvetica',18))
+        my_spin.setFont(qtg.QFont('Helvetica',14))
 
         #Put Combo Box on Screen
         self.layout().addWidget(my_spin)
@@ -42,7 +44,7 @@ class MainWindow(qtw.QWidget):
         self.layout().addWidget(my_button)
 
         def press_it():
-            my_label.setText(f'{my_spin.value()} Project Created')
+            my_label.setText(f'{my_spin.value()} Picked')
             #clear entry box
             my_entry.setText("")
 
