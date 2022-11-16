@@ -23,16 +23,17 @@ class MainWindow(qtw.QWidget):
         my_entry.setText("Enter Project Name")
         self.layout().addWidget(my_entry)
 
-        #Create a Combo Box
-        my_combo = qtw.QComboBox(self)
-        #Add Items to Combo Box
-        my_combo.addItem("Premiere Pro", "Something")
-        my_combo.addItem("Photoshop", 2)
-        my_combo.addItem("After Effects", qtw.QWidget)
-        my_combo.addItem("Premiere2")
-        my_combo.addItem("Audition")
+        #Create a Spin Box
+        my_spin = qtw.QSpinBox(self,
+        value = 10,
+        maximum = 100,
+        minimum = 0,
+        singleStep = 5)
+
+
+
         #Put Combo Box on Screen
-        self.layout().addWidget(my_combo)
+        self.layout().addWidget(my_spin)
     
         #Create a Button
         my_button = qtw.QPushButton("Create Project", 
@@ -40,7 +41,7 @@ class MainWindow(qtw.QWidget):
         self.layout().addWidget(my_button)
 
         def press_it():
-            my_label.setText(f'{my_combo.currentText()} Project Created')
+            my_label.setText(f'{my_spin.value()} Project Created')
             #clear entry box
             my_entry.setText("")
 
