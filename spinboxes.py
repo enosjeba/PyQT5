@@ -30,7 +30,8 @@ class MainWindow(qtw.QWidget):
         minimum = 0,
         singleStep = 5)
 
-
+        #Change Font Size of Spin Box
+        my_spin.setFont(qtg.QFont('Helvetica',18))
 
         #Put Combo Box on Screen
         self.layout().addWidget(my_spin)
