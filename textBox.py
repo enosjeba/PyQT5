@@ -25,7 +25,8 @@ class MainWindow(qtw.QWidget):
 
         #Create a Text Box
         my_text = qtw.QTextEdit(self,
-        acceptRichText = True,
+        plainText = "Real Text",
+        acceptRichText = True, 
         lineWrapMode = qtw.QTextEdit.FixedColumnWidth,
         lineWrapColumnOrWidth = 50,
         placeholderText = "Type Here",
