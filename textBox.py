@@ -31,7 +31,7 @@ class MainWindow(qtw.QWidget):
         lineWrapMode = qtw.QTextEdit.FixedColumnWidth,
         lineWrapColumnOrWidth = 50,
         placeholderText = "Type Here",
-        readOnly = True,
+        readOnly = False,
 
         )
 
