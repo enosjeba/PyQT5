@@ -29,7 +29,7 @@ class MainWindow(qtw.QWidget):
         plainText = "Real Text",
         acceptRichText = True, 
         lineWrapMode = qtw.QTextEdit.FixedColumnWidth,
-        lineWrapColumnOrWidth = 20,
+        lineWrapColumnOrWidth = 50,
         placeholderText = "Type Here",
         readOnly = False,
 
