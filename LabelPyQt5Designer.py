@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.clickme_button = QtWidgets.QPushButton(self.centralwidget)
+        self.clickme_button = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.press_it())
         self.clickme_button.setGeometry(QtCore.QRect(320, 280, 113, 32))
         self.clickme_button.setObjectName("clickme_button")
         self.hello_world_label = QtWidgets.QLabel(self.centralwidget)
