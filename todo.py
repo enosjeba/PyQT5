@@ -58,7 +58,21 @@ class Ui_MainWindow(object):
     #delete item
     def delete_it(self):
         #Grab Current Row 
+        clicked = self.mylist_listWidget.currentRow()
 
+        #Delete Selected Row
+        self.mylist_listWidget.takeItem(clicked)
+
+    #clear all
+    def clear_it(self):
+        self.mylist_listWidget.clear()
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "TODO List"))
+        self.additem_pushButton.setText(_translate("MainWindow", "Add Item"))
+        self.deleteitem_pushButton_2.setText(_translate("MainWindow", "Delete Item"))
+        self.clearall_pushButton_3.setText(_translate("MainWindow", "Clear All"))
 
 
 if __name__ == "__main__":
