@@ -17,13 +17,13 @@ class Ui_MainWindow(object):
         MainWindow.resize(469, 436)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.additem_pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.additem_pushButton = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.add_it())
         self.additem_pushButton.setGeometry(QtCore.QRect(10, 50, 101, 31))
         self.additem_pushButton.setObjectName("additem_pushButton")
-        self.deleteitem_pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.deleteitem_pushButton_2 = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.delete_it())
         self.deleteitem_pushButton_2.setGeometry(QtCore.QRect(130, 50, 101, 31))
         self.deleteitem_pushButton_2.setObjectName("deleteitem_pushButton_2")
-        self.clearall_pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
+        self.clearall_pushButton_3 = QtWidgets.QPushButton(self.centralwidget, clicked = lambda: self.clear_it())
         self.clearall_pushButton_3.setGeometry(QtCore.QRect(250, 50, 101, 31))
         self.clearall_pushButton_3.setObjectName("clearall_pushButton_3")
         self.additem_lineEdit = QtWidgets.QLineEdit(self.centralwidget)
@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
         self.mylist_listWidget = QtWidgets.QListWidget(self.centralwidget)
         self.mylist_listWidget.setGeometry(QtCore.QRect(10, 90, 451, 291))
         self.mylist_listWidget.setObjectName("mylist_listWidget")
-        self.savedb_pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.savedb_pushButton = QtWidgets.QPushButton(self.centralwidget,  clicked = lambda: self.save_it())
         self.savedb_pushButton.setGeometry(QtCore.QRect(370, 50, 91, 31))
         self.savedb_pushButton.setObjectName("savedb_pushButton")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -47,6 +47,40 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    
+    #add item
+    def add_it(self):
+        #Grab item from input
+        item = self.additem_lineEdit.text()
+
+        #add to list
+        self.mylist_listWidget.addItem(item)
+
+        #Clearing Input Field
+        self.additem_lineEdit.setText("")
+
+    #delete item
+    def delete_it(self):
+        #Grab Current Row 
+        clicked = self.mylist_listWidget.currentRow()
+
+        #Delete Selected Row
+        self.mylist_listWidget.takeItem(clicked)
+
+    #clear all
+    def clear_it(self):
+        self.mylist_listWidget.clear()
+
+    #save to db
+    def save_it(self):
+        #blank dictonary
+        items = []
+
+        #loop through items and pull out each
+        for index in range(self.mylist_listWidget.count()):
+            items.append()
+            
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "TODO List"))
@@ -54,7 +88,6 @@ class Ui_MainWindow(object):
         self.deleteitem_pushButton_2.setText(_translate("MainWindow", "Delete Item"))
         self.clearall_pushButton_3.setText(_translate("MainWindow", "Clear All"))
         self.savedb_pushButton.setText(_translate("MainWindow", "Save"))
-
 
 if __name__ == "__main__":
     import sys
