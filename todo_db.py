@@ -78,8 +78,10 @@ class Ui_MainWindow(object):
 
         #loop through items and pull out each
         for index in range(self.mylist_listWidget.count()):
-            items.append()
-            
+            items.append(self.mylist_listWidget.item(index))
+        
+        for item in items:
+            print(item.text())
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
