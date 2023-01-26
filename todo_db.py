@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import sqlite3
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -47,6 +47,9 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        #all items from database
+        self.grab_all()
+
     
     #add item
     def add_it(self):
@@ -73,6 +76,15 @@ class Ui_MainWindow(object):
 
     #save to db
     def save_it(self):
+        #connect to a database
+        conn = sqlite3.connect('mylist.db')
+
+        #create cursor 
+        c = conn.cursor()
+
+        #Delete Everything in database table
+        c.execute('DELETE FROM todo_list;', )
+
         #blank dictonary
         items = []
 
@@ -81,7 +93,40 @@ class Ui_MainWindow(object):
             items.append(self.mylist_listWidget.item(index))
         
         for item in items:
-            print(item.text())
+            # print(item.text())
+            #add stuff to table
+            c.execute("INSERT INTO todo_list VALUES (:item)",
+            {
+                'item': item.text(),
+            })
+
+        #comit
+        conn.commit()
+
+        #close
+        conn.close()
+
+    def grab_all():
+                
+        #Create or connect to a database
+        conn = sqlite3.connect('mylist.db')
+
+        #create cursor 
+        c = conn.cursor()
+
+        #Create Table
+        records = c.execute("SELECT * FROM todo_list")
+        records = c.fetchall()
+
+        #comit
+        conn.commit()
+
+        #close
+        conn.close()
+
+        #find record and add to screen
+        for record in records:
+            self.mylist_listWidget.additem(str(record[0]))
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
